@@ -22,7 +22,7 @@ export default class Player {
             new RunningLeft(this), new RunningRight(this),
             new JumpingLeft(this), new JumpingRight(this),
             new FallingLeft(this), new FallingRight(this)];
-        this.currentState = this.states[0];
+        this.currentState = this.states[1];
         this.currentState.enter();
     }
     update(input, deltaTime) {
