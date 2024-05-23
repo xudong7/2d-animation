@@ -33,7 +33,6 @@ export class StandingLeft extends State {
             this.player.setState(states.STANDING_RIGHT);
         else if (input.includes('ArrowLeft'))
             this.player.setState(states.RUNNING_LEFT);
-        else this.player.setState(states.STANDING_LEFT);
     }
 }
 
@@ -55,7 +54,6 @@ export class StandingRight extends State {
             this.player.setState(states.RUNNING_RIGHT);
         else if (input.includes('ArrowLeft'))
             this.player.setState(states.STANDING_LEFT);
-        else this.player.setState(states.STANDING_RIGHT);
     }
 }
 
