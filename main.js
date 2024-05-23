@@ -24,6 +24,7 @@ window.addEventListener('load', function() {
     }
 
     const game = new Game(canvas.width, canvas.height);
+    
     let lastTime = 0;
     function animate(timeStamp) {
         const deltaTime = timeStamp - lastTime;

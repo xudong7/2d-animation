@@ -1,4 +1,4 @@
-import { Standing, Running, Jumping, Falling } from "./state.js";
+import { StandingLeft, StandingRight, RunningLeft, RunningRight, JumpingLeft, JumpingRight, FallingLeft, FallingRight } from "./state.js";
 
 export default class Player {
     constructor(game) {
@@ -9,7 +9,7 @@ export default class Player {
         this.y = this.game.height - this.height + this.game.groundMargin;
         this.vy = 0;
         this.weight = 0.5;
-        this.image = document.getElementById('idle'); 
+        this.image = document.getElementById('idle-right'); 
         this.frameX = 0;
         this.frameY = 0;
         this.maxFrame = 18;
@@ -18,8 +18,10 @@ export default class Player {
         this.frameTimer = 0;
         this.speed = 0;
         this.maxSpeed = 1;
-        this.states = [new Standing(this), new Running(this), 
-            new Jumping(this), new Falling(this)];
+        this.states = [new StandingLeft(this), new StandingRight(this),
+            new RunningLeft(this), new RunningRight(this),
+            new JumpingLeft(this), new JumpingRight(this),
+            new FallingLeft(this), new FallingRight(this)];
         this.currentState = this.states[0];
         this.currentState.enter();
     }
