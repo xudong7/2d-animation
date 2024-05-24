@@ -12,7 +12,7 @@ export default class Player {
         this.image = document.getElementById('idle-right'); 
         this.frameX = 0;
         this.frameY = 0;
-        this.maxFrame = 18;
+        this.maxFrame = 16;
         this.fps = 60;
         this.frameInterval = 3000 / this.fps;
         this.frameTimer = 0;
@@ -49,6 +49,7 @@ export default class Player {
         else this.frameTimer += deltaTime;
     }
     draw(context) {
+        context.strokeRect(this.x, this.y, this.width, this.height);
         context.drawImage(this.image, 
             this.frameX * this.width, this.frameY * this.height, 
             this.width, this.height,
@@ -57,8 +58,9 @@ export default class Player {
     onGround() {
         return this.y >= this.game.height - this.height + this.game.groundMargin;
     }
-    setState(state) {
+    setState(state, speed) {
         this.currentState = this.states[state];
+        this.game.speed = this.game.maxSpeed * speed;
         this.currentState.enter();
     }
 }

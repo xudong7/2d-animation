@@ -7,7 +7,8 @@ export default class InputHandler {
                     e.key === 'ArrowRight' ||
                     e.key === 'ArrowUp' ||
                     e.key === 'ArrowDown' || 
-                    e.key === 'Enter') 
+                    e.key === 'Enter' ||
+                    e.key === 'Shift') 
                     && this.keys.indexOf(e.key) === -1) 
                 this.keys.push(e.key);
         });
@@ -16,7 +17,8 @@ export default class InputHandler {
                     e.key === 'ArrowRight' ||
                     e.key === 'ArrowUp' ||
                     e.key === 'ArrowDown' ||
-                    e.key === 'Enter')
+                    e.key === 'Enter' ||
+                    e.key === 'Shift')
                 this.keys.splice(e.key);        
         });
         this.musicButton.addEventListener('click', function() {

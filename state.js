@@ -24,15 +24,15 @@ export class StandingLeft extends State {
         this.player.image = document.getElementById('idle-left');
         this.player.frameX = 0;
         this.player.frameY = 0;
-        this.player.maxFrame = 17;
+        this.player.maxFrame = 15;
     }
     handleInput(input) {
         if (input.includes('ArrowUp')) 
-            this.player.setState(states.JUMPING_LEFT);
+            this.player.setState(states.JUMPING_LEFT, -1);
         else if (input.includes('ArrowRight')) 
-            this.player.setState(states.STANDING_RIGHT);
+            this.player.setState(states.STANDING_RIGHT, 0);
         else if (input.includes('ArrowLeft'))
-            this.player.setState(states.RUNNING_LEFT);
+            this.player.setState(states.RUNNING_LEFT, -1);
     }
 }
 
@@ -45,15 +45,15 @@ export class StandingRight extends State {
         this.player.image = document.getElementById('idle-right');
         this.player.frameX = 0;
         this.player.frameY = 0;
-        this.player.maxFrame = 17;
+        this.player.maxFrame = 15;
     }
     handleInput(input) {
         if (input.includes('ArrowUp')) 
-            this.player.setState(states.JUMPING_RIGHT);
+            this.player.setState(states.JUMPING_RIGHT, 1);
         else if (input.includes('ArrowRight')) 
-            this.player.setState(states.RUNNING_RIGHT);
+            this.player.setState(states.RUNNING_RIGHT, 1);
         else if (input.includes('ArrowLeft'))
-            this.player.setState(states.STANDING_LEFT);
+            this.player.setState(states.STANDING_LEFT, 0);
     }
 }
 
@@ -70,11 +70,11 @@ export class RunningLeft extends State {
     }
     handleInput(input) {
         if (!input.includes('ArrowLeft')) 
-            this.player.setState(states.STANDING_LEFT);
+            this.player.setState(states.STANDING_LEFT, 0);
         else if (input.includes('ArrowUp'))
-            this.player.setState(states.JUMPING_LEFT);
+            this.player.setState(states.JUMPING_LEFT, -1);
         else if (input.includes('ArrowRight'))
-            this.player.setState(states.STANDING_RIGHT);
+            this.player.setState(states.STANDING_RIGHT, 0);
     }
 }
 
@@ -91,11 +91,11 @@ export class RunningRight extends State {
     }
     handleInput(input) {
         if (!input.includes('ArrowRight')) 
-            this.player.setState(states.STANDING_RIGHT);
+            this.player.setState(states.STANDING_RIGHT, 0);
         else if (input.includes('ArrowUp'))
-            this.player.setState(states.JUMPING_RIGHT);
+            this.player.setState(states.JUMPING_RIGHT, 1);
         else if (input.includes('ArrowLeft'))
-            this.player.setState(states.STANDING_LEFT);
+            this.player.setState(states.STANDING_LEFT, 0);
     }
 }
 
@@ -114,7 +114,7 @@ export class JumpingLeft extends State {
     }
     handleInput(input) {
         if (this.player.vy > this.player.weight) 
-            this.player.setState(states.FALLING_LEFT);
+            this.player.setState(states.FALLING_LEFT, -1);
     }
 }
 
@@ -133,7 +133,7 @@ export class JumpingRight extends State {
     }
     handleInput(input) {
         if (this.player.vy > this.player.weight) 
-            this.player.setState(states.FALLING_RIGHT);
+            this.player.setState(states.FALLING_RIGHT, 1);
     }
 }
 
@@ -150,7 +150,7 @@ export class FallingLeft extends State {
     }
     handleInput(input) {
         if (this.player.onGround()) 
-            this.player.setState(states.STANDING_LEFT);
+            this.player.setState(states.STANDING_LEFT, 0);
     }
 }
 
@@ -167,6 +167,6 @@ export class FallingRight extends State {
     }
     handleInput(input) {
         if (this.player.onGround()) 
-            this.player.setState(states.STANDING_RIGHT);
+            this.player.setState(states.STANDING_RIGHT, 0);
     }
 }
