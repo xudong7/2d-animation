@@ -107,7 +107,7 @@ export class JumpingLeft extends State {
     enter() {
         this.player.image = document.getElementById('jump-left');
         if (this.player.onGround()) 
-            this.player.vy = -10;
+            this.player.vy = -5;
         this.player.frameY = 0;
         this.player.maxFrame = 18;
         this.player.frameX = 0; 
@@ -126,7 +126,7 @@ export class JumpingRight extends State {
     enter() {
         this.player.image = document.getElementById('jump-right');
         if (this.player.onGround()) 
-            this.player.vy = -10;
+            this.player.vy = -5;
         this.player.frameY = 0;
         this.player.maxFrame = 18;
         this.player.frameX = 0; 

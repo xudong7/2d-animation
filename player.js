@@ -8,7 +8,7 @@ export default class Player {
         this.x = 0;
         this.y = this.game.height - this.height + this.game.groundMargin;
         this.vy = 0;
-        this.weight = 0.5;
+        this.weight = 0.2;
         this.image = document.getElementById('idle-right'); 
         this.frameX = 0;
         this.frameY = 0;
