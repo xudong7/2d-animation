@@ -27,6 +27,7 @@ window.addEventListener('load', function() {
             this.collisions = [];
             this.debug = false;
             this.fontColor = 'white';
+            this.gameOver = false;
             this.score = 0;
             this.hearts = 6;
         }
@@ -65,7 +66,7 @@ window.addEventListener('load', function() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         game.update(deltaTime);
         game.draw(ctx);
-        requestAnimationFrame(animate);
+        if (!game.gameOver) requestAnimationFrame(animate);
     }
     animate(0);
 }); 
