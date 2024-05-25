@@ -27,11 +27,11 @@ export class StandingLeft extends State {
         this.player.maxFrame = 15;
     }
     handleInput(input) {
-        if (input.includes('ArrowUp')) 
+        if (input.includes('ArrowUp') || input.includes('w')) 
             this.player.setState(states.JUMPING_LEFT, -1);
-        else if (input.includes('ArrowRight')) 
+        else if (input.includes('ArrowRight') || input.includes('d')) 
             this.player.setState(states.STANDING_RIGHT, 0);
-        else if (input.includes('ArrowLeft'))
+        else if (input.includes('ArrowLeft') || input.includes('a'))
             this.player.setState(states.RUNNING_LEFT, -1);
     }
 }
@@ -48,11 +48,11 @@ export class StandingRight extends State {
         this.player.maxFrame = 15;
     }
     handleInput(input) {
-        if (input.includes('ArrowUp')) 
+        if (input.includes('ArrowUp') || input.includes('w')) 
             this.player.setState(states.JUMPING_RIGHT, 1);
-        else if (input.includes('ArrowRight')) 
+        else if (input.includes('ArrowRight') || input.includes('d')) 
             this.player.setState(states.RUNNING_RIGHT, 1);
-        else if (input.includes('ArrowLeft'))
+        else if (input.includes('ArrowLeft') || input.includes('a'))
             this.player.setState(states.STANDING_LEFT, 0);
     }
 }
@@ -69,11 +69,11 @@ export class RunningLeft extends State {
         this.player.frameY = 0;
     }
     handleInput(input) {
-        if (!input.includes('ArrowLeft')) 
+        if (!input.includes('ArrowLeft') && !input.includes('a')) 
             this.player.setState(states.STANDING_LEFT, 0);
-        else if (input.includes('ArrowUp'))
+        else if (input.includes('ArrowUp') || input.includes('w'))
             this.player.setState(states.JUMPING_LEFT, -1);
-        else if (input.includes('ArrowRight'))
+        else if (input.includes('ArrowRight') || input.includes('d'))
             this.player.setState(states.STANDING_RIGHT, 0);
     }
 }
@@ -90,11 +90,11 @@ export class RunningRight extends State {
         this.player.frameY = 0;
     }
     handleInput(input) {
-        if (!input.includes('ArrowRight')) 
+        if (!input.includes('ArrowRight') && !input.includes('d')) 
             this.player.setState(states.STANDING_RIGHT, 0);
-        else if (input.includes('ArrowUp'))
+        else if (input.includes('ArrowUp') || input.includes('w'))
             this.player.setState(states.JUMPING_RIGHT, 1);
-        else if (input.includes('ArrowLeft'))
+        else if (input.includes('ArrowLeft') || input.includes('a'))
             this.player.setState(states.STANDING_LEFT, 0);
     }
 }

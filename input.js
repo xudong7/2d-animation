@@ -3,20 +3,20 @@ export default class InputHandler {
         this.keys = [];
         this.musicButton = document.getElementById('musicButton');
         window.addEventListener('keydown', (e) => {
-            if ((   e.key === 'ArrowLeft' ||
-                    e.key === 'ArrowRight' ||
-                    e.key === 'ArrowUp' ||
-                    e.key === 'ArrowDown' || 
+            if ((   e.key === 'ArrowLeft' || e.key === 'a' ||
+                    e.key === 'ArrowRight' || e.key === 'd' ||
+                    e.key === 'ArrowUp' || e.key === 'w' ||
+                    e.key === 'ArrowDown' || e.key === 's' ||
                     e.key === 'Enter' ||
                     e.key === 'Shift') 
                     && this.keys.indexOf(e.key) === -1) 
                 this.keys.push(e.key);
         });
         window.addEventListener('keyup', (e) => {
-            if (    e.key === 'ArrowLeft' ||
-                    e.key === 'ArrowRight' ||
-                    e.key === 'ArrowUp' ||
-                    e.key === 'ArrowDown' ||
+            if (    e.key === 'ArrowLeft' || e.key === 'a' ||
+                    e.key === 'ArrowRight' || e.key === 'd' ||
+                    e.key === 'ArrowUp' || e.key === 'w' ||
+                    e.key === 'ArrowDown' || e.key === 's' ||
                     e.key === 'Enter' ||
                     e.key === 'Shift')
                 this.keys.splice(e.key);        
