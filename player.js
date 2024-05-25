@@ -29,17 +29,24 @@ export default class Player {
         this.currentState.enter();
     }
     update(input, deltaTime) {
+        // checkCollision();
         this.currentState.handleInput(input);
         // horizontal movement
         this.x += this.speed;
-        if (input.includes('ArrowLeft') || input.includes('a')) this.speed = -this.maxSpeed;
-        else if (input.includes('ArrowRight') || input.includes('d')) this.speed = this.maxSpeed;
+        if ((input.includes('ArrowLeft') || input.includes('a')) &&
+            this.currentState !== this.states[8] && this.currentState !== this.states[9]) this.speed = -this.maxSpeed;
+        else if ((input.includes('ArrowRight') || input.includes('d')) &&
+            this.currentState !== this.states[8] && this.currentState !== this.states[9]) this.speed = this.maxSpeed;
         else this.speed = 0;
         // boundary check
         if (this.x < 0) this.x = 0;
         if (this.x > this.game.width - this.width) this.x = this.game.width - this.width;
         // vertical movement
         this.y += this.vy;
+        // vertical boundary check
+        if (this.y < 0) this.y = 0;
+        if (this.y > this.game.height - this.height - this.game.groundMargin) 
+            this.y = this.game.height - this.height - this.game.groundMargin;
         // gravity
         if (!this.onGround()) this.vy += this.weight;
         else this.vy = 0;
@@ -65,5 +72,31 @@ export default class Player {
         this.currentState = this.states[state];
         this.game.speed = this.game.maxSpeed * speed;
         this.currentState.enter();
+    }
+    checkCollision() {
+        this.game.enemies.forEach(enemy => {
+            if (
+                enemy.x < this.x + this.width &&
+                enemy.x + enemy.width > this.x &&
+                enemy.y < this.y + this.height &&
+                enemy.y + enemy.height > this.y
+            ) {
+                // collision detected
+                enemy.markedForDeletion = true;
+                this.game.collisions.push(new CollisionAnimation(this.game, enemy.x + enemy.width * 0.5,
+                    enemy.y + enemy.height * 0.5));
+                if (this.currentState === this.states[4] ||
+                    this.currentState === this.states[5]) {
+                    this.game.score++;
+                }
+                else {
+                    this.game.hearts--;
+                    this.setState(6, 0);
+                    if (this.game.hearts === 0) {
+                        this.game.gameOver = true;
+                    }
+                }
+            }
+        });
     }
 }

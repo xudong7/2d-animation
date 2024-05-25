@@ -24,9 +24,11 @@ window.addEventListener('load', function() {
             this.enemies = [new PuppetEnemy(this)];
             this.enemyTimer = 0;
             this.enemyInterval = 1000;
+            this.collisions = [];
             this.debug = false;
             this.fontColor = 'white';
             this.score = 0;
+            this.hearts = 6;
         }
         update(deltaTime) {
             this.background.update();
