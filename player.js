@@ -49,7 +49,7 @@ export default class Player {
         else this.frameTimer += deltaTime;
     }
     draw(context) {
-        context.strokeRect(this.x, this.y, this.width, this.height);
+        if (this.game.debug) context.strokeRect(this.x + this.width/3, this.y + this.height/4, this.width/3, this.height/2);
         context.drawImage(this.image, 
             this.frameX * this.width, this.frameY * this.height, 
             this.width, this.height,
