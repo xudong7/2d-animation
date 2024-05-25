@@ -9,7 +9,7 @@ export default class InputHandler {
                     e.key === 'ArrowUp' || e.key === 'w' ||
                     e.key === 'ArrowDown' || e.key === 's' ||
                     e.key === 'Enter' || e.key === 'Shift' ||
-                    e.key === '0') 
+                    e.key === 'j' || e.key === '0') 
                     && this.keys.indexOf(e.key) === -1){
                 this.keys.push(e.key);
             }
@@ -21,7 +21,8 @@ export default class InputHandler {
                     e.key === 'ArrowRight' || e.key === 'd' ||
                     e.key === 'ArrowUp' || e.key === 'w' ||
                     e.key === 'ArrowDown' || e.key === 's' ||
-                    e.key === 'Enter' || e.key === 'Shift')
+                    e.key === 'Enter' || e.key === 'Shift' ||
+                    e.key === 'j')
                 this.keys.splice(e.key);        
         });
         this.musicButton.addEventListener('click', function() {

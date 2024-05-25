@@ -1,4 +1,6 @@
-import { StandingLeft, StandingRight, RunningLeft, RunningRight, JumpingLeft, JumpingRight, FallingLeft, FallingRight } from "./state.js";
+import { StandingLeft, StandingRight, RunningLeft, RunningRight,
+    JumpingLeft, JumpingRight, FallingLeft, FallingRight,
+    AttackingLeft, AttackingRight } from "./state.js";
 
 export default class Player {
     constructor(game) {
@@ -21,7 +23,8 @@ export default class Player {
         this.states = [new StandingLeft(this), new StandingRight(this),
             new RunningLeft(this), new RunningRight(this),
             new JumpingLeft(this), new JumpingRight(this),
-            new FallingLeft(this), new FallingRight(this)];
+            new FallingLeft(this), new FallingRight(this),
+            new AttackingLeft(this), new AttackingRight(this)];
         this.currentState = this.states[1];
         this.currentState.enter();
     }
