@@ -9,6 +9,9 @@ const states = {
     FALLING_RIGHT: 7,
     ATTACKING_LEFT: 8,
     ATTACKING_RIGHT: 9,
+    FLOORING_LEFT: 10,
+    FLOORING_RIGHT: 11,
+    HIT: 12
 }
 
 class State {
@@ -214,3 +217,4 @@ export class AttackingRight extends State {
             this.player.setState(states.STANDING_RIGHT, 0);
     }
 }
+

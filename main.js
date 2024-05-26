@@ -21,7 +21,8 @@ window.addEventListener('load', function() {
             this.player = new Player(this);
             this.input = new InputHandler(this);
             this.ui = new UI(this);
-            this.enemies = [new PuppetEnemy(this)];
+            // this.enemies = [new PuppetEnemy(this)];
+            this.enemies = [];
             this.enemyTimer = 0;
             this.enemyInterval = 1000;
             this.collisions = [];

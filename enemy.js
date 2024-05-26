@@ -2,7 +2,7 @@ class Enemy {
     constructor() {
         this.frameX = 0;
         this.frameY = 0;
-        this.fps = 30;
+        this.fps = 20;
         this.frameInterval = 1000 / this.fps;
         this.frameTimer = 0;
         this.markedForDeletion = false;
@@ -39,9 +39,20 @@ export class PuppetEnemy extends Enemy {
         this.speedX = Math.random() + 1;
         this.speedY = 0;
         this.maxFrame = 3;
-        this.image = document.getElementById('enemy-idle-left');
+        this.idleLeftImage = document.getElementById('enemy-idle-left');
+        this.attackLeftImage = document.getElementById('enemy-attack-left');
+        this.attackLeftImage2 = document.getElementById('enemy-attack-left2');
+        this.image = this.idleLeftImage;
     }
-    update(deltaTime) {
+    update(deltaTime) {  
+        if (this.x - this.game.player.x < 50 && this.x - this.game.player.x > 0) {
+            this.image = this.attackLeftImage;
+            this.maxFrame = 5;
+        }
+        else {
+            this.image = this.idleLeftImage;
+            this.maxFrame = 3;
+        }
         super.update(deltaTime);
     }
 }
